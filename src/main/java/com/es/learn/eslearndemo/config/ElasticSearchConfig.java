@@ -17,20 +17,10 @@ import java.net.UnknownHostException;
 @Configuration
 public class ElasticSearchConfig {
 
-    @Value("${elasticsearch.host}")
-    private String esHost;
-
-    @Value("${elasticsearch.port}")
-    private int esPort;
-
-    @Value("${elasticsearch.cluster.name}")
-    private String esName;
-
     @Bean
     public RestHighLevelClient esClient() throws UnknownHostException {
         RestHighLevelClient  client = new RestHighLevelClient( RestClient.builder(
-                new HttpHost("localhost", 9200, "http")));
-
+                new HttpHost("127.0.0.1", 9200, "http")));
         return client;
     }
 }
